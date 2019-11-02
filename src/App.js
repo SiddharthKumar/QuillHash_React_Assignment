@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import Router from './Router/index'
 import './App.css';
 
-  class App extends Component {
-    render(){
-      return (
-       <Router/>
-      );
+import Router from './Router/index'
+import { createBrowserHistory as createHistory } from 'history'
+
+class App extends Component {
+  state = {
+    validUser: true,
+  }
+  render() {
+    if (!this.state.validUser) {
+      const history = createHistory()
+      history.push('/login');
     }
+    return (
+      <Router />
+    );
+  }
 }
 
 export default App;
