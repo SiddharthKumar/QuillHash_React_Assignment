@@ -1,0 +1,14 @@
+{
+    "userList": [
+        {
+            "eMail": "test@xyz.com",
+            "password": "test",
+            "token": "8uEglWEi7COHEZIcj1bn"
+        },
+        {
+            "eMail": "user@xyz.com",
+            "password": "user",
+            "token": "J5ADWkUBz94CIVAEGXEj"
+        }
+    ]
+}
