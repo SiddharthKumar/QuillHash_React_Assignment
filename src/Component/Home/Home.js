@@ -1,14 +1,47 @@
 import React, { Component } from 'react'
 import './Home.css';
 import Imagebox from '../Home/Imagebox/Imagebox';
-import images from './Images.json';
-import fs from 'fs';
-// const fs = require('fs');
-// const imagesList = images.imagesList;
 
 export class Home extends Component {
     state = {
-        imagesList: []
+        imagesList: [
+            {
+                "id": 1,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 2,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 3,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 4,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 5,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 6,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            }
+        ]
     }
 
     writeJsonFile = (list) => {
@@ -49,13 +82,10 @@ export class Home extends Component {
         let imagesList = localStorage.getItem("imagesList");
         if (imagesList != null) {
             imagesList = JSON.parse(imagesList).imagesList;
+            this.setState({
+                imagesList: imagesList,
+            });
         }
-        if (imagesList === null) {
-            imagesList = images.imagesList;
-        }
-        this.setState({
-            imagesList: imagesList,
-        });
     }
 
     render() {
