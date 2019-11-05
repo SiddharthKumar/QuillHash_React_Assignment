@@ -5,6 +5,7 @@ class Header extends Component {
     logout = () => {
         localStorage.removeItem("rememberMe");
         localStorage.removeItem("token");
+        localStorage.removeItem("imagesList");
         sessionStorage.clear();
     }
 

@@ -2,57 +2,74 @@ import React, { Component } from 'react'
 import './Home.css';
 import Imagebox from '../Home/Imagebox/Imagebox';
 import images from './Images.json';
-import fs from 'fs'
+import fs from 'fs';
+// const fs = require('fs');
+// const imagesList = images.imagesList;
 
-
-console.log(fs);
-const imagesList = images.imagesList;
-// console.log(imagesList);
-
-
-
-;
 export class Home extends Component {
     state = {
-        favourite: false,
-        deleted: false
+        imagesList: []
     }
 
+    writeJsonFile = (list) => {
+        list = JSON.stringify({ imagesList: list });
+        localStorage.setItem("imagesList", list)
+    }
+
+    /**
+     * Add favorite image 
+     */
     addFavoriteHandler = (id) => {
-        console.log(id);
+        const newImagesList = this.state.imagesList.map(data => {
+            if (data.id === id) {
+                data.favourite = !data.favourite;
+            }
+            return data;
+        });
+        this.writeJsonFile(newImagesList);
+        this.setState({
+            imagesList: newImagesList,
+        });
     }
-    deleteImageHandler = (id) => {
-        console.log(id);
-        let data = {}
-        data.table = []
-        var obj = {
-            id:1,
-            deleted: true
-        }
-        data.table.push(obj)
-       
-       
-        fs.writeFile("Images.json", JSON.stringify(data), function (err) {
-            if (err) throw err;
-            console.log('complete');
-        }
-        );
 
+    deleteImageHandler = (id) => {
+        const newImagesList = this.state.imagesList.map(data => {
+            if (data.id === id) {
+                data.deleted = true;
+            }
+            return data;
+        });
+        this.writeJsonFile(newImagesList);
+        this.setState({
+            imagesList: newImagesList,
+        });
+    }
+
+    componentDidMount() {
+        let imagesList = localStorage.getItem("imagesList");
+        if (imagesList != null) {
+            imagesList = JSON.parse(imagesList).imagesList;
+        }
+        if (imagesList === null) {
+            imagesList = images.imagesList;
+        }
+        this.setState({
+            imagesList: imagesList,
+        });
     }
 
     render() {
         return (
-            <div className='Home'>
-                <p>this is home Component</p>
+            <div className='container'>
                 <div className='row'>
-                    {imagesList.map(data => {
-                        if (!data.deleted){
+                    {this.state.imagesList.map(data => {
+                        if (!data.deleted) {
                             return <Imagebox
                                 key={data.id}
                                 data={data}
                                 addFavorite={() => this.addFavoriteHandler(data.id)}
-                                deleteImage={()=> this.deleteImageHandler(data.id)} />
-                        }else{
+                                deleteImage={() => this.deleteImageHandler(data.id)} />
+                        } else {
                             return null;
                         }
 
