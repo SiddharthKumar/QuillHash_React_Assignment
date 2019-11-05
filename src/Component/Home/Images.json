@@ -1,0 +1,40 @@
+{
+    "imagesList": [
+        {
+            "id": 1,
+            "icon": "1.jpg" ,
+            "favourite": false,
+            "deleted": false
+        },
+        {
+            "id": 2,
+            "icon": "1.jpg",
+            "favourite": false,
+            "deleted": false
+        },
+        {
+            "id": 3,
+            "icon": "1.jpg",
+            "favourite": false,
+            "deleted": false
+        },
+        {
+            "id": 4,
+            "icon": "1.jpg",
+            "favourite": false,
+            "deleted": false
+        },
+        {
+            "id": 5,
+            "icon": "1.jpg",
+            "favourite": false,
+            "deleted": true
+        },
+        {
+            "id": 6,
+            "icon": "1.jpg",
+            "favourite": false,
+            "deleted": true
+        }
+    ]
+}
