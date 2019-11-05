@@ -40,17 +40,31 @@ export class Home extends Component {
                 "icon": "1.jpg",
                 "favourite": false,
                 "deleted": false
+            },
+            {
+                "id": 7,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
+            },
+            {
+                "id": 8,
+                "icon": "1.jpg",
+                "favourite": false,
+                "deleted": false
             }
         ]
     }
-
+    /**
+    * write all images list in local Storage
+    */
     writeJsonFile = (list) => {
         list = JSON.stringify({ imagesList: list });
         localStorage.setItem("imagesList", list)
     }
 
     /**
-     * Add favorite image 
+     * Add favorite or unfavorite image 
      */
     addFavoriteHandler = (id) => {
         const newImagesList = this.state.imagesList.map(data => {
@@ -64,7 +78,9 @@ export class Home extends Component {
             imagesList: newImagesList,
         });
     }
-
+    /**
+    * Delete  image
+    */
     deleteImageHandler = (id) => {
         const newImagesList = this.state.imagesList.map(data => {
             if (data.id === id) {
@@ -78,6 +94,9 @@ export class Home extends Component {
         });
     }
 
+    /**
+     * check images are availabe in localStorage or not
+     */
     componentDidMount() {
         let imagesList = localStorage.getItem("imagesList");
         if (imagesList != null) {
@@ -90,7 +109,7 @@ export class Home extends Component {
 
     render() {
         return (
-            <div className='container'>
+            <div className='container' style={{ maxWidth: 1280 }}>
                 <div className='row'>
                     {this.state.imagesList.map(data => {
                         if (!data.deleted) {
@@ -104,8 +123,6 @@ export class Home extends Component {
                         }
 
                     })}
-                    {/* <Imagebox />
-                    <Imagebox /> */}
                 </div>
             </div>
         )

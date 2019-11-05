@@ -1,5 +1,6 @@
 import React from 'react';
 import './Notfound.css';
+import { Link } from 'react-router-dom';
 
 const notfound = () =>{
     return (
@@ -7,7 +8,13 @@ const notfound = () =>{
             <div>
                 close !
             </div>
-            <p><span>error 404 !</span> sorry page isn't found for one of the reformes </p>
+            <p><span>error 404 !</span> sorry page isn't found for one of the reformes.  
+            <Link
+                to={"/"}
+                    style={{ textDecoration: 'none' }}
+                >{" Back to HOME"}
+            </Link>
+                </p>
         </div>
     )
 }

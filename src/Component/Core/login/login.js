@@ -14,6 +14,9 @@ export class login extends Component {
         errorMsg: "",
     }
 
+    /**
+    * State Change Handler
+    */
     handleStateChange = (type) => (event) => {
         let value = null;
         switch (type) {
@@ -41,7 +44,9 @@ export class login extends Component {
             }
         }
     }
-
+    /**
+    * Login Handler (set token in loacl storage)
+    */
     handleLogin = (event) => {
         event.preventDefault();
         userList.map(user => {
@@ -68,6 +73,7 @@ export class login extends Component {
                     : null
                 }
                 <form>
+                    <h1>Login:</h1>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
                         <input
@@ -101,8 +107,9 @@ export class login extends Component {
                     </div>
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="btn btn-warning"
                         onClick={this.handleLogin}
+                        style={{ border:'solid #a54b15'}}
                     >Submit</button>
                 </form>
 

@@ -1,4 +1,9 @@
 .loginBody{
     width:80%;
-    margin : 11%;
+    margin : 10%;
+    border-style: outset;
+    border-width: 8px;
+    border-color:#a54b15 ;
+    padding: 12px; 
+    background-color: #efd55c;
 }
